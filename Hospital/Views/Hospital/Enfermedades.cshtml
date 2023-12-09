@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Enfermedad>
+@{
+    ViewData["Title"] = "Enfermedades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Enfermedades</h1>
+
+<form action="@Url.Action("Enfermedades","Hospital")" method="post" class="mt-3">
+    <div class="row">
+        <div class="col">
+            <input class="form-control" placeholder="Servicio" name="ser"></input>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-dark">Aplicar</button>
+        </div>
+    </div>
+
+</form>
+
+<table class="table text-center mt-5 align-middle">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Detectada por
+            </th>
+            <th>
+                Servicio
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody class="">
+        @foreach (Enfermedad pe in Model)
+        {
+            <tr>
+                <td>
+                    @pe.Nombre
+                </td>
+                <td>
+                    @foreach (Equipos p in pe.equipos)
+                    {
+                        @p.Nombre
+                    }
+                </td>
+                <td>
+                    @foreach (Equipos p in pe.equipos)
+                    {
+                        <p></p>
+                        @foreach (Servicios s in p.servicios)
+                        {
+                            <p>🩺 @s.Nombre</p>
+                        }
+                    }
+                </td>  
+            </tr>
+        }
+    </tbody>
+</table>
+

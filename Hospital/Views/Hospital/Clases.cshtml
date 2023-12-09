@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Clases";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int aux = ViewBag.Lista1.Count;
+}
+
+<h1>Clases</h1>
+
+
+<table class="table mt-5 align-middle text-center">
+    <thead>
+        <tr>
+            <th>
+                Clase
+            </th>
+            <th>
+                Label
+            </th>
+            <th>
+                Descripcion
+            </th>
+        </tr>
+    </thead>
+    <tbody class="">
+        @for (var i=0; i<aux;i++)
+        {
+            <tr>
+                <td>
+                    @ViewBag.Lista1[i]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
